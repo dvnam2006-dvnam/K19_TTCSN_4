@@ -10,8 +10,7 @@ public class KhoaHocDAO {
 
     private static final Logger LOGGER = Logger.getLogger(KhoaHocDAO.class.getName());
     private static final List<KhoaHoc> MOCK_COURSES = new ArrayList<>();
-
-    static {
+     static {
         MOCK_COURSES.add(new KhoaHoc("KH001", "Java", "Java từ cơ bản đến hướng đối tượng",
             "Khóa học giúp bạn xây dựng nền tảng lập trình Java vững chắc, từ cú pháp cơ bản đến tư duy hướng đối tượng. Mỗi chương kết hợp video hướng dẫn, ví dụ minh họa và bài tập để bạn áp dụng ngay kiến thức đã học.\n\nỞ cuối khóa học, bạn sẽ tự xây dựng ứng dụng Quản lý sinh viên bằng Java, tổ chức mã nguồn theo lớp và xử lý dữ liệu đầu vào.",
             "Nguyễn Minh Tuấn", 499000, 0, "42 bài học • 28 giờ", "Cơ bản", "Đang mở", "Java"));
