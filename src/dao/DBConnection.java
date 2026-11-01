@@ -6,7 +6,6 @@ import java.net.URLClassLoader;
 import java.sql.*;
 import java.util.Properties;
 import java.util.logging.Logger;
-
 /**
  * Quản lý kết nối CSDL SQL Server (HaUICourseDB)
  * Tự động nạp JDBC Driver từ thư mục lib/ và kết nối trực tiếp tới SQL Server.
