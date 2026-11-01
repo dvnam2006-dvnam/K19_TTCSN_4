@@ -116,8 +116,7 @@ public class AppUtils {
         ));
         pf.setPreferredSize(new Dimension(250, 36));
         return pf;
-    }
-
+    }     
     /** Gradient panel */
     public static JPanel createGradientPanel(Color c1, Color c2) {
         return new JPanel() {
