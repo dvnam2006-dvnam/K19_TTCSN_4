@@ -3,7 +3,7 @@
 > **Tên chủ đề** Xây dựng modun phía khách hàng bán khóa học lập trình HaUI  
 > Giao diện được thiết kế chuẩn **theo bản vẽ**, tích hợp hệ quản trị cơ sở dữ liệu **Microsoft SQL Server**, mô hình kiến trúc phân lớp  **DAO / MVC**.
 
----<img width="927" height="773" alt="image" src="https://github.com/user-attachments/assets/4428eb6e-efa8-4c13-8d4c-006a1305878e" />
+---
 
 
 ## 📌 Mục Lục
