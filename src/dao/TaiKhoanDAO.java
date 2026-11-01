@@ -7,11 +7,11 @@ public class TaiKhoanDAO {
 
     private static TaiKhoan mockUser = new TaiKhoan(
         "KH001",
-        "Hoàng Tuấn Anh",
-        "tuananh.haui@gmail.com",
+        "Nguyễn Văn An",
+        "an.nguyen@email.com",
         "123456",
-        "0987654321",
-        "2026IT6040003",
+        "0912345678",
+        "2021601234",
         "Hoạt động",
         new java.util.Date()
     );

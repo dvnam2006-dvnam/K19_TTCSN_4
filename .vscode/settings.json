@@ -1,8 +1,8 @@
 {
     "java.project.referencedLibraries": [
-        "HaUI_CourseApp/lib/**/*.jar"
+        "lib/**/*.jar"
     ],
     "java.project.sourcePaths": [
-        "HaUI_CourseApp/src"
+        "src"
     ]
 }

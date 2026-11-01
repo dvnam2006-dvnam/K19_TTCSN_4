@@ -1,10 +1,9 @@
 # 🎓 HaUI Course App - Hệ Thống Đăng Ký & Quản Lý Khóa Học Trực Tuyến
 
-> **Tên chủ đề** Xây dựng modun phía khách hàng bán khóa học lập trình HaUI  
-> Giao diện được thiết kế chuẩn **theo bản vẽ**, tích hợp hệ quản trị cơ sở dữ liệu **Microsoft SQL Server**, mô hình kiến trúc phân lớp  **DAO / MVC**.
+> **Dự án ứng dụng Desktop Java Swing** dành cho sinh viên Trường Đại học Công nghiệp Hà Nội (HaUI).  
+> Giao diện được thiết kế hiện đại, chuẩn **1:1 theo bản vẽ Figma**, tích hợp hệ quản trị cơ sở dữ liệu **Microsoft SQL Server**, mô hình kiến trúc phân lớp chuẩn **DAO / MVC**.
 
 ---
-
 
 ## 📌 Mục Lục
 - [Giới Thiệu Tổng Quan](#-giới-thiệu-tổng-quan)
@@ -13,11 +12,12 @@
 - [Cấu Trúc Thư Mục Dự Án](#-cấu-trúc-thư-mục-dự-án)
 - [Tài Khoản & Dữ Liệu Mẫu](#-tài-khoản--dữ-liệu-mẫu)
 - [Hướng Dẫn Cài Đặt & Khởi Chạy](#-hướng-dẫn-cài-đặt--khởi-chạy)
-  - [1. Khởi tạo Cơ sở dữ liệu SQL Server](#1-khởi-tạo-cơ-sở-dữ-liệu-sql-server)
-  - [2. Chạy ứng dụng bằng dòng lệnh (CLI)](#2-chạy-ứng-dụng-bằng-dòng-lệnh-cli)
-  - [3. Chạy ứng dụng trên IDE (VS Code / IntelliJ IDEA / Eclipse)](#3-chạy-ứng-dụng-trên-ide)
-- [Thiết Kế Giao Diện](#-thiết-kế-giao-diện)
-- [Liên Hệ & Bản Quyền](#-liên-hệ--bản-quyền)
+  - [1. Khởi chạy nhanh với run.bat (Khuyên dùng)](#1-khởi-chạy-nhanh-với-runbat-khuyên-dùng)
+  - [2. Khởi tạo Cơ sở dữ liệu thủ công](#2-khởi-tạo-cơ-sở-dữ-liệu-thủ-công)
+  - [3. Chạy ứng dụng bằng dòng lệnh (CLI)](#3-chạy-ứng-dụng-bằng-dòng-lệnh-cli)
+  - [4. Chạy ứng dụng trên IDE (VS Code / IntelliJ IDEA / Eclipse)](#4-chạy-ứng-dụng-trên-ide)
+- [Thiết Kế Giao Diện Chuẩn Figma](#-thiết-kế-giao-diện-chuẩn-figma)
+- [Bản Quyền & Tác Giả](#-bản-quyền--tác-giả)
 
 ---
 
@@ -31,7 +31,7 @@
 
 ### 1. 🔐 Xác thực người dùng (Auth)
 - **Mặc định khởi động tại màn hình Đăng nhập**: Tự động chuyển đến màn hình Đăng nhập khi mở ứng dụng.
-- **Form Đăng nhập**: Thiết kế cân đối hai khối (Khối giới thiệu thương hiệu HaUI kèm logo + Khối form đăng nhập).
+- **Form Đăng nhập chuẩn Figma**: Thiết kế cân đối hai khối (Khối giới thiệu thương hiệu HaUI kèm logo + Khối form đăng nhập hiện đại).
 - **Đăng ký tài khoản mới**: Kiểm tra trùng email, mã sinh viên, tự động băm mật khẩu và lưu vào SQL Server.
 - **Quản lý phiên đăng nhập (`UserSession`)**: Duy trì trạng thái người dùng xuyên suốt toàn bộ ứng dụng bằng mô hình Singleton.
 
@@ -99,38 +99,39 @@
 ## 📁 Cấu Trúc Thư Mục Dự Án
 
 ```text
-K19_TTCSN_4/
+avc/
 ├── .vscode/                     # Cấu hình workspace Visual Studio Code
-├── README.md                    # Tài liệu hướng dẫn dự án (File này)
-└── HaUI_CourseApp/              # Mã nguồn chính của ứng dụng
-    ├── bin/                     # Thư mục chứa các file .class đã biên dịch
-    ├── lib/                     # Thư viện ngoài và tài nguyên đồ họa
-    │   ├── haui_logo.png        # Logo biểu trưng Đại học Công nghiệp Hà Nội
-    │   └── mssql-jdbc-12.4.2.jre11.jar # Driver kết nối Microsoft SQL Server
-    ├── sql/
-    │   └── schema.sql           # Kịch bản DDL & DML khởi tạo CSDL HaUICourseDB
-    └── src/                     # Toàn bộ mã nguồn Java
-        ├── Main.java            # Điểm khởi chạy ứng dụng (Entry Point)
-        ├── dao/                 # Tầng truy xuất dữ liệu (Data Access Object)
-        │   ├── DBConnection.java # Quản lý kết nối SQL Server & nạp Driver
-        │   ├── DangKyDAO.java   # Xử lý đăng ký khóa học
-        │   ├── DonHangDAO.java  # Xử lý đơn hàng & chi tiết đơn hàng
-        │   ├── GioHangDAO.java  # Xử lý thêm, xóa, lấy giỏ hàng
-        │   ├── KhoaHocDAO.java  # Xử lý truy vấn danh sách & chi tiết khóa học
-        │   └── TaiKhoanDAO.java # Xử lý đăng nhập, đăng ký, cập nhật tài khoản
-        ├── model/               # Tầng thực thể dữ liệu (POJO)
-        │   ├── ChiTietGioHang.java
-        │   ├── DangKy.java
-        │   ├── DonHang.java
-        │   ├── GioHang.java
-        │   ├── KhoaHoc.java
-        │   └── TaiKhoan.java
-        ├── session/             # Quản lý phiên làm việc người dùng
-        │   └── UserSession.java # Singleton lưu tài khoản đang đăng nhập
-        ├── ui/                  # Giao diện người dùng
-        │   └── MainFrame.java   # Điều phối màn hình
-        └── utils/               # Tiện ích định dạng tiền tệ, ngày tháng
-            └── AppUtils.java
+│   └── settings.json
+├── bin/                         # Thư mục chứa các file .class đã biên dịch
+├── lib/                         # Thư viện ngoài và tài nguyên đồ họa
+│   ├── haui_logo.png            # Logo biểu trưng Đại học Công nghiệp Hà Nội
+│   └── mssql-jdbc-12.4.2.jre11.jar # Driver kết nối Microsoft SQL Server
+├── sql/
+│   └── schema.sql               # Kịch bản DDL & DML khởi tạo CSDL HaUICourseDB
+├── src/                         # Toàn bộ mã nguồn Java
+│   ├── Main.java                # Điểm khởi chạy ứng dụng (Entry Point)
+│   ├── dao/                     # Tầng truy xuất dữ liệu (Data Access Object)
+│   │   ├── DBConnection.java    # Quản lý kết nối SQL Server & nạp Driver
+│   │   ├── DangKyDAO.java       # Xử lý đăng ký khóa học
+│   │   ├── DonHangDAO.java      # Xử lý đơn hàng & chi tiết đơn hàng
+│   │   ├── GioHangDAO.java      # Xử lý thêm, xóa, lấy giỏ hàng
+│   │   ├── KhoaHocDAO.java      # Xử lý truy vấn danh sách & chi tiết khóa học
+│   │   └── TaiKhoanDAO.java     # Xử lý đăng nhập, đăng ký, cập nhật tài khoản
+│   ├── model/                   # Tầng thực thể dữ liệu (POJO)
+│   │   ├── ChiTietGioHang.java
+│   │   ├── DangKy.java
+│   │   ├── DonHang.java
+│   │   ├── GioHang.java
+│   │   ├── KhoaHoc.java
+│   │   └── TaiKhoan.java
+│   ├── session/                 # Quản lý phiên làm việc người dùng
+│   │   └── UserSession.java     # Singleton lưu tài khoản đang đăng nhập
+│   ├── ui/                      # Giao diện người dùng
+│   │   └── MainFrame.java       # Điều phối màn hình chuẩn Figma 1:1
+│   └── utils/                   # Tiện ích định dạng tiền tệ, ngày tháng
+│       └── AppUtils.java
+├── run.bat                      # File khởi chạy tự động (kiểm tra CSDL & chạy app)
+└── README.md                    # Tài liệu hướng dẫn dự án (File này)
 ```
 
 ---
@@ -141,9 +142,7 @@ K19_TTCSN_4/
 
 | Họ và tên | Mã sinh viên | Email đăng nhập | Mật khẩu |
 | :--- | :--- | :--- | :--- |
-| **Hoàng Tuấn Anh** | `2026IT6040003` | `tuananh.haui@gmail.com` | `123456` |
 | **Nguyễn Văn An** | `2021601234` | `an.nguyen@email.com` | `123456` |
-| **Sinh viên HaUI** | `2022600001` | `sv@haui.edu.vn` | `123456` |
 
 > *Lưu ý: Bạn cũng có thể nhấn vào nút **"Đăng ký ngay"** trên giao diện để tạo một tài khoản mới bất kỳ.*
 
@@ -159,13 +158,25 @@ K19_TTCSN_4/
 
 ## 💻 Hướng Dẫn Cài Đặt & Khởi Chạy
 
-### 1. Khởi tạo Cơ sở dữ liệu SQL Server
+### 1. Khởi chạy nhanh với `run.bat` (Khuyên dùng)
+
+Chỉ cần nhấp đúp vào file `run.bat` hoặc mở terminal tại thư mục `avc` và gõ:
+```cmd
+run.bat
+```
+- **Tự động kiểm tra CSDL**: Kiểm tra cơ sở dữ liệu `HaUICourseDB`. Nếu chưa có, script tự động nạp file `sql\schema.sql`. Nếu đã tồn tại thì tự động bỏ qua.
+- **Tự động biên dịch**: Tự động biên dịch mã nguồn Java nếu thư mục `bin` chưa có class.
+- **Khởi chạy ứng dụng**: Khởi chạy ứng dụng HaUI Course App với đầy đủ thư viện.
+
+---
+
+### 2. Khởi tạo Cơ sở dữ liệu thủ công
 
 1. Mở **SQL Server Management Studio (SSMS)** hoặc **Azure Data Studio**.
 2. Kết nối tới SQL Server cục bộ (`localhost` hoặc `127.0.0.1:1433`).
-3. Mở file [schema.sql](file:///c:/Users/Administrator/Desktop/Full%20Proj/K19_TTCSN_4/HaUI_CourseApp/sql/schema.sql) trong thư mục `HaUI_CourseApp/sql/`.
+3. Mở file [schema.sql](file:///c:/Users/Administrator/Desktop/Full%20Proj/avc/sql/schema.sql) trong thư mục `sql/`.
 4. Nhấn **Execute (F5)** để chạy kịch bản tạo CSDL `HaUICourseDB` cùng toàn bộ bảng và dữ liệu mẫu.
-5. Kiểm tra thông tin kết nối trong [DBConnection.java](file:///c:/Users/Administrator/Desktop/Full%20Proj/K19_TTCSN_4/HaUI_CourseApp/src/dao/DBConnection.java):
+5. Kiểm tra thông tin kết nối trong [DBConnection.java](file:///c:/Users/Administrator/Desktop/Full%20Proj/avc/src/dao/DBConnection.java):
    ```java
    private static final String SERVER   = "localhost";
    private static final String PORT     = "1433";
@@ -173,48 +184,46 @@ K19_TTCSN_4/
    private static final String USERNAME = "sa";
    private static final String PASSWORD = "123456";
    ```
-   *(Tùy chỉnh `USERNAME` và `PASSWORD` cho phù hợp với cấu hình máy của bạn nếu cần).*
 
 ---
 
-### 2. Chạy ứng dụng bằng dòng lệnh (CLI)
+### 3. Chạy ứng dụng bằng dòng lệnh (CLI)
 
-Mở PowerShell hoặc Command Prompt tại thư mục gốc `K19_TTCSN_4` và thực hiện:
+Mở PowerShell hoặc Command Prompt tại thư mục gốc `avc` và thực hiện:
 
-#### Bước 2.1: Biên dịch mã nguồn Java
+#### Bước 3.1: Biên dịch mã nguồn Java
 ```powershell
-cd HaUI_CourseApp
-javac -encoding UTF-8 -cp "lib/mssql-jdbc-12.4.2.jre11.jar" -d bin src/*.java src/dao/*.java src/model/*.java src/session/*.java src/ui/*.java src/utils/*.java
+javac -encoding UTF-8 -cp "lib/*" -d bin src/*.java src/dao/*.java src/model/*.java src/session/*.java src/ui/*.java src/utils/*.java
 ```
 
-#### Bước 2.2: Khởi chạy ứng dụng
+#### Bước 3.2: Khởi chạy ứng dụng
 ```powershell
-java -cp "bin;lib/mssql-jdbc-12.4.2.jre11.jar" Main
+java -cp "bin;lib/*" Main
 ```
 
 ---
 
-### 3. Chạy ứng dụng trên IDE
+### 4. Chạy ứng dụng trên IDE
 
 #### Trên Visual Studio Code:
 1. Cài đặt extension **Extension Pack for Java**.
-2. Mở thư mục dự án `K19_TTCSN_4` trong VS Code.
-3. Đảm bảo file JAR `HaUI_CourseApp/lib/mssql-jdbc-12.4.2.jre11.jar` đã được nhận diện trong mục **Java Projects > Referenced Libraries**.
-4. Mở file `HaUI_CourseApp/src/Main.java` và nhấn biểu tượng **Run** (hoặc `F5`).
+2. Mở thư mục dự án `avc` trong VS Code.
+3. Đảm bảo file JAR `lib/mssql-jdbc-12.4.2.jre11.jar` đã được nhận diện trong mục **Java Projects > Referenced Libraries**.
+4. Mở file `src/Main.java` và nhấn biểu tượng **Run** (hoặc `F5`).
 
 #### Trên IntelliJ IDEA:
-1. Chọn **File > Open**, chọn thư mục `HaUI_CourseApp`.
-2. Vào **File > Project Structure > Modules > Dependencies > Add JARs or directories...**, chọn file `HaUI_CourseApp/lib/mssql-jdbc-12.4.2.jre11.jar`.
+1. Chọn **File > Open**, chọn thư mục `avc`.
+2. Vào **File > Project Structure > Modules > Dependencies > Add JARs or directories...**, chọn file `lib/mssql-jdbc-12.4.2.jre11.jar`.
 3. Chuột phải vào file `src/Main.java` chọn **Run 'Main.main()'**.
 
-#### Trên NetBeans / Eclipse :
+#### Trên NetBeans / Eclipse:
 1. Tạo một Java Project mới trỏ thư mục nguồn vào `src/`.
 2. Add External JAR file `lib/mssql-jdbc-12.4.2.jre11.jar` vào **Build Path / Libraries**.
 3. Chọn `Main.java` làm Main Class và tiến hành Run Project.
 
 ---
 
-## 🎨 Thiết Kế Giao Diện 
+## 🎨 Thiết Kế Giao Diện Chuẩn Figma
 
 - **Bảng màu nhận diện (Palette):**
   - **Màu chủ đạo (Primary Red):** `#BA1C1C` / `#D32F2F` (Màu cờ & logo HaUI).
@@ -229,3 +238,7 @@ java -cp "bin;lib/mssql-jdbc-12.4.2.jre11.jar" Main
 
 ---
 
+## 👥 Bản Quyền & Tác Giả
+
+- **Đơn vị phát triển:** Nhóm 4 - Sinh viên Khoa Công nghệ Thông tin - Trường Đại học Công nghiệp Hà Nội (HaUI).
+- **Mục đích:** Đồ án môn học / Bài tập lớn Lập trình ứng dụng Java Swing & Cơ sở dữ liệu.

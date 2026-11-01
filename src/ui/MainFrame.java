@@ -2385,7 +2385,7 @@ public class MainFrame extends JFrame {
                 String email = txtEmail.getText().trim();
                 String pass = new String(txtPass.getPassword());
                 if (email.isEmpty() || pass.isEmpty()) {
-                    AppUtils.showError(this, "Vui lòng nhập Email và Mật khẩu!\n(Tài khoản CSDL mẫu: tuananh.haui@gmail.com / 123456)");
+                    AppUtils.showError(this, "Vui lòng nhập Email và Mật khẩu!\n(Tài khoản CSDL mẫu: an.nguyen@email.com / 123456)");
                     return;
                 }
                 TaiKhoan tk = taiKhoanDAO.dangNhap(email, pass);
@@ -2397,7 +2397,7 @@ public class MainFrame extends JFrame {
                     AppUtils.showSuccess(this, "Đăng nhập thành công! Xin chào " + tk.getHoTen());
                     navigate(PAGE_HOME);
                 } else {
-                    AppUtils.showError(this, "Email hoặc mật khẩu không chính xác!\n(Tài khoản CSDL: tuananh.haui@gmail.com hoặc an.nguyen@email.com / 123456)");
+                    AppUtils.showError(this, "Email hoặc mật khẩu không chính xác!\n(Tài khoản CSDL: an.nguyen@email.com / 123456)");
                 }
             });
 

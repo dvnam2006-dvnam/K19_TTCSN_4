@@ -185,8 +185,8 @@ GO
 
 -- 3. Tài khoản mẫu
 INSERT INTO TAI_KHOAN (MaKhachHang, HoTen, Email, MatKhau, SoDienThoai, MaSinhVien, TrangThai) VALUES
-('KH001', N'Hoàng Tuấn Anh', 'tuananh.haui@gmail.com', '123456', '0987654321', '2026IT6040003', N'Hoạt động'),
-('KH002', N'Nguyễn Văn An',  'an.nguyen@email.com',    '123456', '0912345678', '2021601234',    N'Hoạt động'),
+('KH001', N'Nguyễn Văn An',  'an.nguyen@email.com',    '123456', '0912345678', '2021601234',    N'Hoạt động'),
+('KH002', N'Trần Thị Mai',  'mai.tran@email.com',     '123456', '0912345679', '2021605678',    N'Hoạt động'),
 ('KH003', N'Sinh viên HaUI', 'sv@haui.edu.vn',         '123456', '0901234567', '2022600001',    N'Hoạt động');
 GO
 
