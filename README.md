@@ -1,7 +1,7 @@
 # 🎓 HaUI Course App - Hệ Thống Đăng Ký & Quản Lý Khóa Học Trực Tuyến
 
 > **Dự án ứng dụng Desktop Java Swing** dành cho sinh viên Trường Đại học Công nghiệp Hà Nội (HaUI).  
-> Giao diện được thiết kế hiện đại, chuẩn **1:1 theo bản vẽ Figma**, tích hợp hệ quản trị cơ sở dữ liệu **Microsoft SQL Server**, mô hình kiến trúc phân lớp chuẩn **DAO / MVC**.
+> Giao diện được thiết kế chuẩn **theo bản vẽ**, tích hợp hệ quản trị cơ sở dữ liệu **Microsoft SQL Server**, mô hình kiến trúc phân lớp chuẩn **DAO / MVC**.
 
 ---
 
@@ -223,7 +223,7 @@ java -cp "bin;lib/*" Main
 
 ---
 
-## 🎨 Thiết Kế Giao Diện Chuẩn Figma
+## 🎨 Thiết Kế Giao Diện
 
 - **Bảng màu nhận diện (Palette):**
   - **Màu chủ đạo (Primary Red):** `#BA1C1C` / `#D32F2F` (Màu cờ & logo HaUI).
@@ -241,4 +241,4 @@ java -cp "bin;lib/*" Main
 ## 👥 Bản Quyền & Tác Giả
 
 - **Đơn vị phát triển:** Nhóm 4 - Sinh viên Khoa Công nghệ Thông tin - Trường Đại học Công nghiệp Hà Nội (HaUI).
-- **Mục đích:** Đồ án môn học / Bài tập lớn Lập trình ứng dụng Java Swing & Cơ sở dữ liệu.
+- **Mục đích:** Bài tập lớn Lập trình ứng dụng Java Swing & Cơ sở dữ liệu.
