@@ -96,10 +96,6 @@ public class DBConnection {
         }
     }
 
-    public static void closeConnection() {
-        // Mỗi kết nối được đóng tự động qua try-with-resources tại tầng DAO
-    }
-
     /** Kiểm tra kết nối CSDL khi khởi động */
     public static boolean testConnection() {
         mockMode = false;

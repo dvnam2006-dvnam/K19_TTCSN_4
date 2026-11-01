@@ -3,9 +3,12 @@ package dao;
 import model.KhoaHoc;
 import java.sql.*;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class KhoaHocDAO {
 
+    private static final Logger LOGGER = Logger.getLogger(KhoaHocDAO.class.getName());
     private static final List<KhoaHoc> MOCK_COURSES = new ArrayList<>();
 
     static {
@@ -113,14 +116,16 @@ public class KhoaHocDAO {
 
     /** Lấy chi tiết 1 khóa học theo mã từ SQL Server */
     public KhoaHoc getChiTiet(String maKhoaHoc) {
+        if (maKhoaHoc == null || maKhoaHoc.trim().isEmpty()) return null;
         if (!DBConnection.isMockMode()) {
             List<KhoaHoc> dbRes = query("SELECT * FROM KHOA_HOC WHERE MaKhoaHoc = ?", ps -> ps.setString(1, maKhoaHoc));
             if (!dbRes.isEmpty()) return dbRes.get(0);
+            if (!DBConnection.isMockMode()) return null;
         }
         for (KhoaHoc kh : MOCK_COURSES) {
             if (kh.getMaKhoaHoc().equalsIgnoreCase(maKhoaHoc)) return kh;
         }
-        return MOCK_COURSES.get(0);
+        return null;
     }
 
     // ====== Utility ======
@@ -135,7 +140,9 @@ public class KhoaHocDAO {
                 ResultSet rs = ps.executeQuery();
                 while (rs.next()) list.add(mapRow(rs));
             }
-        } catch (SQLException ignored) {}
+        } catch (SQLException e) {
+            LOGGER.log(Level.WARNING, "Không thể truy vấn khóa học.", e);
+        }
         return list;
     }
 

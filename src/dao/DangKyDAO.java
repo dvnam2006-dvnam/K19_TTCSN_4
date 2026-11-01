@@ -61,6 +61,9 @@ public class DangKyDAO {
         String maDangKy = "DK" + System.currentTimeMillis() % 100000;
         KhoaHocDAO khDAO = new KhoaHocDAO();
         KhoaHoc kh = khDAO.getChiTiet(maKhoaHoc);
+        if (kh == null) {
+            return false;
+        }
 
         if (DBConnection.isMockMode()) {
             MOCK_DANG_KY.add(0, new DangKy(maDangKy, maKH, kh, "DH" + (System.currentTimeMillis() % 10000), new java.util.Date(), "Đã thanh toán"));

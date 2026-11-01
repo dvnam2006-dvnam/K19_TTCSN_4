@@ -34,7 +34,7 @@ public class AppUtils {
 
     /** Validate số điện thoại VN */
     public static boolean isValidPhone(String phone) {
-        return phone != null && phone.matches("^(0[3|5|7|8|9])[0-9]{8}$");
+        return phone != null && phone.matches("^0[35789][0-9]{8}$");
     }
 
     /** Truncate text */
