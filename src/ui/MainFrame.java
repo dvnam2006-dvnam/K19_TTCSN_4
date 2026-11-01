@@ -123,6 +123,7 @@ public class MainFrame extends JFrame {
     private int selectedPriceRange = 0;
     private String searchKeyword = "";
     private int discountPercent = 0;
+    private String appliedVoucher;
 
     // Auth state: true = Đăng nhập, false = Đăng ký (Mặc định mở màn hình Đăng nhập)
     private boolean isAuthLoginMode = true;
@@ -1976,16 +1977,12 @@ public class MainFrame extends JFrame {
             int dbDiscount = donHangDAO.kiemTraVoucher(code);
             if (dbDiscount > 0) {
                 discountPercent = dbDiscount;
+                appliedVoucher = code;
                 AppUtils.showSuccess(this, "Áp dụng mã ưu đãi " + code + " thành công (Giảm " + discountPercent + "%)!");
-            } else if ("HAUI10".equals(code)) {
-                discountPercent = 10;
-            } else if ("HAUI20".equals(code)) {
-                discountPercent = 20;
-            } else if ("HAUI50".equals(code)) {
-                discountPercent = 50;
             } else {
                 AppUtils.showError(this, "Mã ưu đãi không hợp lệ hoặc đã hết hạn!\n(Mã hợp lệ trong CSDL: HAUI10, HAUI20, HAUI50)");
                 discountPercent = 0;
+                appliedVoucher = null;
             }
             refreshCheckoutSummary();
         });
@@ -2058,24 +2055,38 @@ public class MainFrame extends JFrame {
                 return;
             }
 
+            String voucher = null;
+            int currentDiscountPercent = 0;
+            if (discountPercent > 0) {
+                String enteredVoucher = txtMaUuDai.getText().trim().toUpperCase();
+                int validatedDiscount = donHangDAO.kiemTraVoucher(enteredVoucher);
+                if (!enteredVoucher.equals(appliedVoucher) || validatedDiscount != discountPercent) {
+                    discountPercent = 0;
+                    appliedVoucher = null;
+                    refreshCheckoutSummary();
+                    AppUtils.showError(this, "Mã ưu đãi đã thay đổi hoặc không còn hợp lệ. Vui lòng áp dụng lại.");
+                    return;
+                }
+                voucher = enteredVoucher;
+                currentDiscountPercent = validatedDiscount;
+            }
+
             String maKH = getCurrentCustomerId();
             long subtotal = 0;
             for (ChiTietGioHang ct : list) subtotal += ct.getDonGia();
-            long discount = (subtotal * discountPercent) / 100;
+            long discount = (subtotal * currentDiscountPercent) / 100;
             long total = subtotal - discount;
             String payMethod = selectedPaymentMethod == 0 ? "Chuyển khoản ngân hàng" :
                                (selectedPaymentMethod == 1 ? "Ví điện tử MoMo" : "Thẻ ATM nội địa / Internet Banking");
-            String voucher = discountPercent > 0 ? txtMaUuDai.getText().trim().toUpperCase() : null;
 
             String maDH = donHangDAO.taoDonHang(maKH, voucher, list, subtotal, discount, total, payMethod, cartId);
             if (maDH == null) {
-                for (ChiTietGioHang ct : list) {
-                    dangKyDAO.dangKyKhoaHoc(maKH, ct.getKhoaHoc().getMaKhoaHoc());
-                }
-                gioHangDAO.xoaGio(cartId);
-                maDH = "DH" + (System.currentTimeMillis() % 100000);
+                AppUtils.showError(this,
+                        "Không thể tạo đơn hàng. Giỏ hàng của bạn vẫn được giữ nguyên; vui lòng kiểm tra kết nối CSDL và thử lại.");
+                return;
             }
             discountPercent = 0;
+            appliedVoucher = null;
             updateCartBadge();
 
             AppUtils.showSuccess(this,
@@ -2084,7 +2095,9 @@ public class MainFrame extends JFrame {
                 "Khách hàng: " + name + "\n" +
                 "Email nhận bài học: " + email + "\n" +
                 "Phương thức: " + payMethod + "\n\n" +
-                "Dữ liệu đơn hàng và khóa học đã được lưu vào CSDL SQL Server (HaUICourseDB).");
+                (DBConnection.isMockMode()
+                    ? "Đơn hàng được xử lý trong chế độ dữ liệu mẫu và chỉ tồn tại trong phiên chạy."
+                    : "Dữ liệu đơn hàng và khóa học đã được lưu vào CSDL SQL Server (HaUICourseDB)."));
 
             navigate(PAGE_MY_COURSES);
         });

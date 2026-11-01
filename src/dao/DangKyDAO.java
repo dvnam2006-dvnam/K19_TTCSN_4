@@ -86,6 +86,15 @@ public class DangKyDAO {
         }
     }
 
+    /** Ghi nhận đăng ký sau khi một đơn hàng được tạo trong chế độ dữ liệu mẫu. */
+    public void ghiNhanThanhToanMock(String maKH, KhoaHoc khoaHoc, String maDonHang, String maDangKy) {
+        if (khoaHoc == null) {
+            throw new IllegalArgumentException("Khóa học đăng ký không được để trống.");
+        }
+        MOCK_DANG_KY.add(0, new DangKy(
+                maDangKy, maKH, khoaHoc, maDonHang, new java.util.Date(), "Đã thanh toán"));
+    }
+
     /** Lấy danh sách khóa học đã đăng ký (chức năng 2.2 tuần 6) */
     public List<DangKy> getDanhSachDaDangKy(String maKH) {
         if (DBConnection.isMockMode()) {

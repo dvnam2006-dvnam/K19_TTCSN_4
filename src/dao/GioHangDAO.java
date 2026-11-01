@@ -168,14 +168,21 @@ public class GioHangDAO {
 
     /** Xóa toàn bộ giỏ sau khi thanh toán */
     public void xoaGio(String maGioHang) {
-        MOCK_CART.clear();
+        if (DBConnection.isMockMode()) {
+            MOCK_CART.removeIf(ct -> maGioHang.equals(ct.getMaGioHang()));
+            return;
+        }
         try (Connection conn = DBConnection.getConnection()) {
             if (conn != null) {
-                PreparedStatement ps1 = conn.prepareStatement("DELETE FROM CHI_TIET_GIO_HANG WHERE MaGioHang=?");
-                ps1.setString(1, maGioHang);
-                ps1.executeUpdate();
+                try (PreparedStatement ps = conn.prepareStatement(
+                        "DELETE FROM CHI_TIET_GIO_HANG WHERE MaGioHang=?")) {
+                    ps.setString(1, maGioHang);
+                    ps.executeUpdate();
+                }
             }
-        } catch (SQLException e) {}
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     /** Đếm số items trong giỏ */
