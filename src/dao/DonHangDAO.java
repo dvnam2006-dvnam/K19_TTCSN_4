@@ -8,8 +8,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class DonHangDAO {
     private static final AtomicInteger ID_SEQUENCE = new AtomicInteger();
-
-    /** Kiểm tra voucher hợp lệ - trả về % giảm hoặc -1 nếu không hợp lệ */
+        /** Kiểm tra voucher hợp lệ - trả về % giảm hoặc -1 nếu không hợp lệ */
     public int kiemTraVoucher(String maVoucher) {
         if (maVoucher == null || maVoucher.trim().isEmpty()) return -1;
         if (DBConnection.isMockMode()) {
