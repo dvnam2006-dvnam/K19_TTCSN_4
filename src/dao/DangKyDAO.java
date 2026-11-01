@@ -5,9 +5,7 @@ import java.sql.*;
 import java.util.*;
 
 public class DangKyDAO {
-
     private static final List<DangKy> MOCK_DANG_KY = new ArrayList<>();
-
     static {
         KhoaHocDAO khDAO = new KhoaHocDAO();
         KhoaHoc kh = khDAO.getChiTiet("KH004");
