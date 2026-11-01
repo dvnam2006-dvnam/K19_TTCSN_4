@@ -7,7 +7,6 @@ import java.util.*;
 public class GioHangDAO {
 
     private static final List<ChiTietGioHang> MOCK_CART = new ArrayList<>();
-
     static {
         // Khởi tạo 2 khóa học mặc định trong giỏ giống hệt ảnh mẫu của bạn
         KhoaHocDAO khDAO = new KhoaHocDAO();
