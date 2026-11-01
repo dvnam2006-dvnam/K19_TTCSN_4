@@ -3,7 +3,8 @@
 > **Tên chủ đề** Xây dựng modun phía khách hàng bán khóa học lập trình HaUI  
 > Giao diện được thiết kế chuẩn **theo bản vẽ**, tích hợp hệ quản trị cơ sở dữ liệu **Microsoft SQL Server**, mô hình kiến trúc phân lớp  **DAO / MVC**.
 
----
+---<img width="927" height="773" alt="image" src="https://github.com/user-attachments/assets/4428eb6e-efa8-4c13-8d4c-006a1305878e" />
+
 
 ## 📌 Mục Lục
 - [Giới Thiệu Tổng Quan](#-giới-thiệu-tổng-quan)
@@ -98,7 +99,7 @@
 ## 📁 Cấu Trúc Thư Mục Dự Án
 
 ```text
-avc/
+K19_TTCSN_4/
 ├── .vscode/                     # Cấu hình workspace Visual Studio Code
 ├── README.md                    # Tài liệu hướng dẫn dự án (File này)
 └── HaUI_CourseApp/              # Mã nguồn chính của ứng dụng
@@ -162,9 +163,9 @@ avc/
 
 1. Mở **SQL Server Management Studio (SSMS)** hoặc **Azure Data Studio**.
 2. Kết nối tới SQL Server cục bộ (`localhost` hoặc `127.0.0.1:1433`).
-3. Mở file [schema.sql](file:///c:/Users/Administrator/Desktop/Full%20Proj/avc/HaUI_CourseApp/sql/schema.sql) trong thư mục `HaUI_CourseApp/sql/`.
+3. Mở file [schema.sql](file:///c:/Users/Administrator/Desktop/Full%20Proj/K19_TTCSN_4/HaUI_CourseApp/sql/schema.sql) trong thư mục `HaUI_CourseApp/sql/`.
 4. Nhấn **Execute (F5)** để chạy kịch bản tạo CSDL `HaUICourseDB` cùng toàn bộ bảng và dữ liệu mẫu.
-5. Kiểm tra thông tin kết nối trong [DBConnection.java](file:///c:/Users/Administrator/Desktop/Full%20Proj/avc/HaUI_CourseApp/src/dao/DBConnection.java):
+5. Kiểm tra thông tin kết nối trong [DBConnection.java](file:///c:/Users/Administrator/Desktop/Full%20Proj/K19_TTCSN_4/HaUI_CourseApp/src/dao/DBConnection.java):
    ```java
    private static final String SERVER   = "localhost";
    private static final String PORT     = "1433";
@@ -178,7 +179,7 @@ avc/
 
 ### 2. Chạy ứng dụng bằng dòng lệnh (CLI)
 
-Mở PowerShell hoặc Command Prompt tại thư mục gốc `avc` và thực hiện:
+Mở PowerShell hoặc Command Prompt tại thư mục gốc `K19_TTCSN_4` và thực hiện:
 
 #### Bước 2.1: Biên dịch mã nguồn Java
 ```powershell
@@ -197,7 +198,7 @@ java -cp "bin;lib/mssql-jdbc-12.4.2.jre11.jar" Main
 
 #### Trên Visual Studio Code:
 1. Cài đặt extension **Extension Pack for Java**.
-2. Mở thư mục dự án `avc` trong VS Code.
+2. Mở thư mục dự án `K19_TTCSN_4` trong VS Code.
 3. Đảm bảo file JAR `HaUI_CourseApp/lib/mssql-jdbc-12.4.2.jre11.jar` đã được nhận diện trong mục **Java Projects > Referenced Libraries**.
 4. Mở file `HaUI_CourseApp/src/Main.java` và nhấn biểu tượng **Run** (hoặc `F5`).
 
