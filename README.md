@@ -1,7 +1,7 @@
 # 🎓 HaUI Course App - Hệ Thống Đăng Ký & Quản Lý Khóa Học Trực Tuyến
 
-> **Dự án ứng dụng Desktop Java Swing** dành cho sinh viên Trường Đại học Công nghiệp Hà Nội (HaUI).  
-> Giao diện được thiết kế hiện đại, chuẩn **1:1 theo bản vẽ Figma**, tích hợp hệ quản trị cơ sở dữ liệu **Microsoft SQL Server**, mô hình kiến trúc phân lớp chuẩn **DAO / MVC**.
+> **Tên chủ đề** Xây dựng modun phía khách hàng bán khóa học lập trình HaUI  
+> Giao diện được thiết kế chuẩn **theo bản vẽ**, tích hợp hệ quản trị cơ sở dữ liệu **Microsoft SQL Server**, mô hình kiến trúc phân lớp  **DAO / MVC**.
 
 ---
 
@@ -15,7 +15,7 @@
   - [1. Khởi tạo Cơ sở dữ liệu SQL Server](#1-khởi-tạo-cơ-sở-dữ-liệu-sql-server)
   - [2. Chạy ứng dụng bằng dòng lệnh (CLI)](#2-chạy-ứng-dụng-bằng-dòng-lệnh-cli)
   - [3. Chạy ứng dụng trên IDE (VS Code / IntelliJ IDEA / Eclipse)](#3-chạy-ứng-dụng-trên-ide)
-- [Thiết Kế Giao Diện Chuẩn Figma](#-thiết-kế-giao-diện-chuẩn-figma)
+- [Thiết Kế Giao Diện](#-thiết-kế-giao-diện)
 - [Liên Hệ & Bản Quyền](#-liên-hệ--bản-quyền)
 
 ---
@@ -30,7 +30,7 @@
 
 ### 1. 🔐 Xác thực người dùng (Auth)
 - **Mặc định khởi động tại màn hình Đăng nhập**: Tự động chuyển đến màn hình Đăng nhập khi mở ứng dụng.
-- **Form Đăng nhập chuẩn Figma**: Thiết kế cân đối hai khối (Khối giới thiệu thương hiệu HaUI kèm logo + Khối form đăng nhập hiện đại).
+- **Form Đăng nhập**: Thiết kế cân đối hai khối (Khối giới thiệu thương hiệu HaUI kèm logo + Khối form đăng nhập).
 - **Đăng ký tài khoản mới**: Kiểm tra trùng email, mã sinh viên, tự động băm mật khẩu và lưu vào SQL Server.
 - **Quản lý phiên đăng nhập (`UserSession`)**: Duy trì trạng thái người dùng xuyên suốt toàn bộ ứng dụng bằng mô hình Singleton.
 
@@ -206,14 +206,14 @@ java -cp "bin;lib/mssql-jdbc-12.4.2.jre11.jar" Main
 2. Vào **File > Project Structure > Modules > Dependencies > Add JARs or directories...**, chọn file `HaUI_CourseApp/lib/mssql-jdbc-12.4.2.jre11.jar`.
 3. Chuột phải vào file `src/Main.java` chọn **Run 'Main.main()'**.
 
-#### Trên NetBeans / Eclipse:
+#### Trên NetBeans / Eclipse :
 1. Tạo một Java Project mới trỏ thư mục nguồn vào `src/`.
 2. Add External JAR file `lib/mssql-jdbc-12.4.2.jre11.jar` vào **Build Path / Libraries**.
 3. Chọn `Main.java` làm Main Class và tiến hành Run Project.
 
 ---
 
-## 🎨 Thiết Kế Giao Diện Chuẩn Figma
+## 🎨 Thiết Kế Giao Diện 
 
 - **Bảng màu nhận diện (Palette):**
   - **Màu chủ đạo (Primary Red):** `#BA1C1C` / `#D32F2F` (Màu cờ & logo HaUI).
@@ -228,8 +228,3 @@ java -cp "bin;lib/mssql-jdbc-12.4.2.jre11.jar" Main
 
 ---
 
-## 👨‍💻 Bản Quyền & Tác Giả
-
-- **Đơn vị phát triển:** Sinh viên Khoa Công nghệ Thông tin - Trường Đại học Công nghiệp Hà Nội (HaUI).
-- **Mục đích:** Đồ án môn học / Bài tập lớn Lập trình ứng dụng Java Swing & Cơ sở dữ liệu.
-- Mọi đóng góp và thắc mắc vui lòng gửi pull request hoặc liên hệ qua email quản trị viên repository.
