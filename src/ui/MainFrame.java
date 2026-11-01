@@ -204,7 +204,7 @@ public class MainFrame extends JFrame {
     }
 
     // =========================================================================
-    // CORE LAYOUT CONTAINERS (Đảm bảo căn lề trái tuyệt đối 100%, không lệch)
+    // CORE LAYOUT CONTAINERS (Đảm bảo căn lề trái tuyệt đối)
     // =========================================================================
 
     /**
