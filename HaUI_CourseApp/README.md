@@ -1,9 +1,10 @@
 # 🎓 HaUI Course App - Hệ Thống Đăng Ký & Quản Lý Khóa Học Trực Tuyến
 
-> **Dự án ứng dụng Desktop Java Swing** dành cho sinh viên Trường Đại học Công nghiệp Hà Nội (HaUI).  
-> Giao diện được thiết kế hiện đại, chuẩn **1:1 theo bản vẽ Figma**, tích hợp hệ quản trị cơ sở dữ liệu **Microsoft SQL Server**, mô hình kiến trúc phân lớp chuẩn **DAO / MVC**.
+> **Tên chủ đề** Xây dựng modun phía khách hàng bán khóa học lập trình HaUI  
+> Giao diện được thiết kế chuẩn **theo bản vẽ**, tích hợp hệ quản trị cơ sở dữ liệu **Microsoft SQL Server**, mô hình kiến trúc phân lớp  **DAO / MVC**.
 
 ---
+
 
 ## 📌 Mục Lục
 - [Giới Thiệu Tổng Quan](#-giới-thiệu-tổng-quan)
@@ -15,7 +16,7 @@
   - [1. Khởi tạo Cơ sở dữ liệu SQL Server](#1-khởi-tạo-cơ-sở-dữ-liệu-sql-server)
   - [2. Chạy ứng dụng bằng dòng lệnh (CLI)](#2-chạy-ứng-dụng-bằng-dòng-lệnh-cli)
   - [3. Chạy ứng dụng trên IDE (VS Code / IntelliJ IDEA / Eclipse)](#3-chạy-ứng-dụng-trên-ide)
-- [Thiết Kế Giao Diện Chuẩn Figma](#-thiết-kế-giao-diện-chuẩn-figma)
+- [Thiết Kế Giao Diện](#-thiết-kế-giao-diện)
 - [Liên Hệ & Bản Quyền](#-liên-hệ--bản-quyền)
 
 ---
@@ -30,7 +31,7 @@
 
 ### 1. 🔐 Xác thực người dùng (Auth)
 - **Mặc định khởi động tại màn hình Đăng nhập**: Tự động chuyển đến màn hình Đăng nhập khi mở ứng dụng.
-- **Form Đăng nhập chuẩn Figma**: Thiết kế cân đối hai khối (Khối giới thiệu thương hiệu HaUI kèm logo + Khối form đăng nhập hiện đại).
+- **Form Đăng nhập**: Thiết kế cân đối hai khối (Khối giới thiệu thương hiệu HaUI kèm logo + Khối form đăng nhập).
 - **Đăng ký tài khoản mới**: Kiểm tra trùng email, mã sinh viên, tự động băm mật khẩu và lưu vào SQL Server.
 - **Quản lý phiên đăng nhập (`UserSession`)**: Duy trì trạng thái người dùng xuyên suốt toàn bộ ứng dụng bằng mô hình Singleton.
 
@@ -98,7 +99,7 @@
 ## 📁 Cấu Trúc Thư Mục Dự Án
 
 ```text
-avc/
+K19_TTCSN_4/
 ├── .vscode/                     # Cấu hình workspace Visual Studio Code
 ├── README.md                    # Tài liệu hướng dẫn dự án (File này)
 └── HaUI_CourseApp/              # Mã nguồn chính của ứng dụng
@@ -127,7 +128,7 @@ avc/
         ├── session/             # Quản lý phiên làm việc người dùng
         │   └── UserSession.java # Singleton lưu tài khoản đang đăng nhập
         ├── ui/                  # Giao diện người dùng
-        │   └── MainFrame.java   # Điều phối màn hình chuẩn Figma 1:1
+        │   └── MainFrame.java   # Điều phối màn hình
         └── utils/               # Tiện ích định dạng tiền tệ, ngày tháng
             └── AppUtils.java
 ```
@@ -162,9 +163,9 @@ avc/
 
 1. Mở **SQL Server Management Studio (SSMS)** hoặc **Azure Data Studio**.
 2. Kết nối tới SQL Server cục bộ (`localhost` hoặc `127.0.0.1:1433`).
-3. Mở file [schema.sql](file:///c:/Users/Administrator/Desktop/Full%20Proj/avc/HaUI_CourseApp/sql/schema.sql) trong thư mục `HaUI_CourseApp/sql/`.
+3. Mở file [schema.sql](file:///c:/Users/Administrator/Desktop/Full%20Proj/K19_TTCSN_4/HaUI_CourseApp/sql/schema.sql) trong thư mục `HaUI_CourseApp/sql/`.
 4. Nhấn **Execute (F5)** để chạy kịch bản tạo CSDL `HaUICourseDB` cùng toàn bộ bảng và dữ liệu mẫu.
-5. Kiểm tra thông tin kết nối trong [DBConnection.java](file:///c:/Users/Administrator/Desktop/Full%20Proj/avc/HaUI_CourseApp/src/dao/DBConnection.java):
+5. Kiểm tra thông tin kết nối trong [DBConnection.java](file:///c:/Users/Administrator/Desktop/Full%20Proj/K19_TTCSN_4/HaUI_CourseApp/src/dao/DBConnection.java):
    ```java
    private static final String SERVER   = "localhost";
    private static final String PORT     = "1433";
@@ -178,7 +179,7 @@ avc/
 
 ### 2. Chạy ứng dụng bằng dòng lệnh (CLI)
 
-Mở PowerShell hoặc Command Prompt tại thư mục gốc `avc` và thực hiện:
+Mở PowerShell hoặc Command Prompt tại thư mục gốc `K19_TTCSN_4` và thực hiện:
 
 #### Bước 2.1: Biên dịch mã nguồn Java
 ```powershell
@@ -197,7 +198,7 @@ java -cp "bin;lib/mssql-jdbc-12.4.2.jre11.jar" Main
 
 #### Trên Visual Studio Code:
 1. Cài đặt extension **Extension Pack for Java**.
-2. Mở thư mục dự án `avc` trong VS Code.
+2. Mở thư mục dự án `K19_TTCSN_4` trong VS Code.
 3. Đảm bảo file JAR `HaUI_CourseApp/lib/mssql-jdbc-12.4.2.jre11.jar` đã được nhận diện trong mục **Java Projects > Referenced Libraries**.
 4. Mở file `HaUI_CourseApp/src/Main.java` và nhấn biểu tượng **Run** (hoặc `F5`).
 
@@ -206,14 +207,14 @@ java -cp "bin;lib/mssql-jdbc-12.4.2.jre11.jar" Main
 2. Vào **File > Project Structure > Modules > Dependencies > Add JARs or directories...**, chọn file `HaUI_CourseApp/lib/mssql-jdbc-12.4.2.jre11.jar`.
 3. Chuột phải vào file `src/Main.java` chọn **Run 'Main.main()'**.
 
-#### Trên NetBeans / Eclipse:
+#### Trên NetBeans / Eclipse :
 1. Tạo một Java Project mới trỏ thư mục nguồn vào `src/`.
 2. Add External JAR file `lib/mssql-jdbc-12.4.2.jre11.jar` vào **Build Path / Libraries**.
 3. Chọn `Main.java` làm Main Class và tiến hành Run Project.
 
 ---
 
-## 🎨 Thiết Kế Giao Diện Chuẩn Figma
+## 🎨 Thiết Kế Giao Diện 
 
 - **Bảng màu nhận diện (Palette):**
   - **Màu chủ đạo (Primary Red):** `#BA1C1C` / `#D32F2F` (Màu cờ & logo HaUI).
@@ -228,8 +229,3 @@ java -cp "bin;lib/mssql-jdbc-12.4.2.jre11.jar" Main
 
 ---
 
-## 👨‍💻 Bản Quyền & Tác Giả
-
-- **Đơn vị phát triển:** Sinh viên Khoa Công nghệ Thông tin - Trường Đại học Công nghiệp Hà Nội (HaUI).
-- **Mục đích:** Đồ án môn học / Bài tập lớn Lập trình ứng dụng Java Swing & Cơ sở dữ liệu.
-- Mọi đóng góp và thắc mắc vui lòng gửi pull request hoặc liên hệ qua email quản trị viên repository.
