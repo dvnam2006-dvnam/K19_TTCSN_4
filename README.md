@@ -35,7 +35,7 @@
 - **Đăng ký tài khoản mới**: Kiểm tra trùng email, mã sinh viên, tự động băm mật khẩu và lưu vào SQL Server.
 - **Quản lý phiên đăng nhập (`UserSession`)**: Duy trì trạng thái người dùng xuyên suốt toàn bộ ứng dụng bằng mô hình Singleton.
 
-### 2. 🏠 Trang chủ sinh động (Home)
+### 2. 🏠 Trang chủ sinh động (home)
 - Banner Hero giới thiệu các chương trình đào tạo chuẩn khoa CNTT - HaUI.
 - Thống kê nhanh: Số lượng khóa học, giảng viên, sinh viên đồng hành.
 - Danh mục phân loại: *Java*, *C++*, *Python*, *HTML/CSS*, *Spring Boot*.
