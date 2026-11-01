@@ -127,7 +127,7 @@ avc/
         ├── session/             # Quản lý phiên làm việc người dùng
         │   └── UserSession.java # Singleton lưu tài khoản đang đăng nhập
         ├── ui/                  # Giao diện người dùng
-        │   └── MainFrame.java   # Điều phối màn hình chuẩn Figma 1:1
+        │   └── MainFrame.java   # Điều phối màn hình
         └── utils/               # Tiện ích định dạng tiền tệ, ngày tháng
             └── AppUtils.java
 ```
